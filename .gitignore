@@ -1,0 +1,25 @@
+.venv/
+cookies.txt
+*.db
+*.db-wal
+*.db-shm
+downloads/
+logs/
+.env
+__pycache__/
+*.py[cod]
+.DS_Store
+backups/
+
+# User library and downloaded media — keep on this Mac only
+data/
+*.part
+*.ytdl
+*.mp4
+*.m4v
+*.mkv
+*.webm
+*.mp3
+*.m4a
+*.opus
+*.ogg

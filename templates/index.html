@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YouTube Playlist Studio</title><link rel="stylesheet" href="/static/style.css">
+</head><body>
+<div class="app-shell">
+ <header class="topbar"><div class="brand"><span class="brand-mark">▶</span><div><strong>YouTube Playlist Studio</strong><small>کتابخانهٔ شخصی و دانلود هوشمند</small></div></div><div class="top-actions"><span id="cookiePill" class="status-pill muted">بررسی کوکی…</span><button class="button secondary" onclick="refreshCookies()">⌘ بروزرسانی کوکی</button><button class="icon-button" title="باز کردن پوشه دانلود" onclick="openDownloads()">⌑</button></div></header>
+ <div class="workspace">
+  <aside class="library-panel"><div class="panel-heading"><div><span class="eyebrow">LIBRARY</span><h2>کتابخانهٔ شما</h2></div><button class="icon-button" onclick="loadLibrary()" title="بروزرسانی">↻</button></div>
+   <div class="add-channel"><input id="channelUrl" placeholder="لینک اصلی کانال YouTube"><button class="button primary" onclick="addChannel()">افزودن کانال</button></div>
+   <div class="library-search"><span>⌕</span><input id="librarySearch" oninput="renderLibrary()" placeholder="جست‌وجوی کتابخانه"></div><div id="library" class="library-tree"></div>
+  </aside>
+  <main class="content-panel"><div class="collection-header"><div><span id="collectionEyebrow" class="eyebrow">PLAYLIST STUDIO</span><h1 id="currentTitle">یک Playlist را انتخاب کنید</h1><p id="currentMeta">از پنل سمت راست یک مجموعه را باز کنید.</p></div><button id="syncButton" class="button secondary" disabled onclick="syncCurrent()">↻ Sync Playlist</button></div>
+   <div class="toolbar"><div class="search-field"><span>⌕</span><input id="videoSearch" oninput="renderVideos()" placeholder="جست‌وجو در عنوان، کانال یا Video ID"></div><div class="toolbar-actions"><button class="text-button" onclick="selectVisible(true)">انتخاب همه</button><button class="text-button" onclick="selectVisible(false)">لغو انتخاب</button><button class="text-button accent" onclick="selectNotDownloaded()">فقط دانلودنشده‌ها</button></div></div>
+   <div class="range-row"><span>انتخاب بازه</span><input id="rangeFrom" type="number" min="1" placeholder="از شماره"><span>تا</span><input id="rangeTo" type="number" min="1" placeholder="شماره"><button class="button small" onclick="selectRange()">انتخاب بازه</button><span id="selectionSummary" class="selection-summary">۰ ویدیو انتخاب شده</span></div>
+   <div id="emptyState" class="empty-state"><div class="empty-icon">▣</div><h3>Playlist را برای شروع انتخاب کنید</h3><p>ویدیوها بدون دانلود شدن نمایش داده می‌شوند.</p></div><div id="videoList" class="video-list"></div>
+  </main>
+  <aside class="queue-panel"><div class="queue-heading"><div><span class="eyebrow">DOWNLOAD CENTER</span><h2>دانلود و صف</h2></div><button class="icon-button danger" title="لغو دانلود جاری" onclick="cancelCurrent()">■</button></div>
+   <section class="settings-card"><label>کیفیت خروجی<select id="quality"><option value="360">360p · کم‌حجم</option><option value="480">480p</option><option value="720" selected>720p · پیشنهادی</option><option value="1080">1080p · باکیفیت</option><option value="best">Best · بهترین کیفیت</option></select></label><label class="toggle-row"><input id="sendTelegram" type="checkbox" onchange="toggleTelegram()"><span class="switch"></span><span>ارسال پس از دانلود به Telegram</span></label><div id="telegramOptions" class="telegram-options"><input id="chatId" placeholder="Telegram Chat ID"><button class="text-button" onclick="detectChat()">تشخیص خودکار Chat ID</button><label class="check-row"><input id="keepFile" type="checkbox" checked> فایل روی مک بماند</label></div><button id="queueButton" class="button primary wide" onclick="enqueueSelected()">افزودن به صف دانلود <b id="queueCount">۰</b></button></section>
+   <div class="queue-title"><span>وضعیت زنده</span><button class="text-button" onclick="clearFinished()">پاک‌کردن پایان‌یافته‌ها</button></div><div id="queue" class="queue-list"><div class="queue-empty">صف دانلود خالی است.</div></div>
+  </aside>
+ </div>
+</div><div id="toast" class="toast"></div><script src="/static/app.js"></script></body></html>
